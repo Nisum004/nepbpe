@@ -1,0 +1,31 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Large data files — never commit these
+data/
+checkpoints/
+*.npz
+*.bin
+*.pt
+*.safetensors
+
+# Tokenizer large files
+tokenizer/nepbpe_spm/nepbpe.model
+tokenizer/nepbpe_16000/
+tokenizer/nepbpe_32000/
+
+# Node
+node_modules/
+frontend/node_modules/
+package-lock.json
+package.json
+
+# Mac
+.DS_Store
+
+# Vite build
+frontend/dist/

@@ -1,0 +1,7 @@
+{
+  "model": "NepBPE-SPM (SentencePiece BPE)",
+  "vocab_size": 32000,
+  "avg_tokens_nepbpe_spm": 5.8,
+  "avg_tokens_gpt4": 34.9,
+  "saving_vs_gpt4_percent": 83.3810888252149
+}
