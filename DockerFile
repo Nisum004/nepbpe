@@ -5,12 +5,12 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y git \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
+COPY backend/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY model.py .
-COPY app.py .
-COPY download_models.py .
+COPY backend/model_torch.py ./model_torch.py
+COPY backend/app.py ./app.py
+COPY backend/download_models.py ./download_models.py
 COPY benchmark/ ./benchmark/
 
 # Download tokenizer + models at build time
