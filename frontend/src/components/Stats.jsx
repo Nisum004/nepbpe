@@ -28,7 +28,8 @@ export default function Stats() {
       </h1>
       <p style={{ color: "#888", fontSize: 14, marginBottom: 28 }}>
         NepBPE is a custom Nepali tokenizer and language model trained from scratch
-        on Nepali Wikipedia. Built as a final year project at CSIT.
+        on Nepali Wikipedia. 
+        Built as a final year project for CSIT 8th Semester by Nisum Yonghang and Prasamsha Pudasaini from St.Xavier's College.
       </p>
 
       {/* Stats table */}
