@@ -33,7 +33,12 @@ print("✅ GPT-4o tokenizer loaded")
 
 # ── Load Llama3 tokenizer ─────────────────────────────────
 print("Loading Llama3 tokenizer...")
-llama_tok = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3-8B")
+import os
+
+llama_tok = AutoTokenizer.from_pretrained(
+    "meta-llama/Meta-Llama-3-8B",
+    token=os.environ["HF_TOKEN"],
+)
 print("✅ Llama3 tokenizer loaded")
 
 # ── Load models ───────────────────────────────────────────
