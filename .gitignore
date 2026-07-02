@@ -23,6 +23,8 @@ node_modules/
 frontend/node_modules/
 package-lock.json
 package.json
+!frontend/package.json
+!frontend/package-lock.json
 
 # Mac
 .DS_Store
