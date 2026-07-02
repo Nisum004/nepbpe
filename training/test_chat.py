@@ -24,7 +24,7 @@ def chat(prompt, temperature=0.7, top_k=30, rep_penalty=1.4, max_tokens=100):
     generated = list(ids)
 
     # Stop token in new format
-    stop_ids = sp.encode("अन्त्य ।", out_type=int)
+    stop_ids = sp.encode("अन्त्य", out_type=int)
 
     for _ in range(max_tokens):
         logits      = model(x)
@@ -56,7 +56,7 @@ def chat(prompt, temperature=0.7, top_k=30, rep_penalty=1.4, max_tokens=100):
                 break
 
         # Also stop at new question
-        new_q_ids = sp.encode("प्रश्न ।", out_type=int)
+        new_q_ids = sp.encode("प्रश्न", out_type=int)
         if len(generated) >= len(new_q_ids):
             if generated[-len(new_q_ids):] == new_q_ids:
                 generated = generated[:-len(new_q_ids)]

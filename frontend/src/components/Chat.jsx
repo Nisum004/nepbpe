@@ -20,6 +20,17 @@ export default function Chat() {
   const [loading, setLoading] = useState(false)
   const bottomRef             = useRef(null)
 
+  const buildHistory = (currentMessages) => (
+    currentMessages
+      .slice(0, -1)
+      .filter(m => m.role === "user" || m.role === "assistant")
+      .slice(-8)
+      .map(m => ({
+        role: m.role,
+        content: m.text,
+      }))
+  )
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
@@ -29,12 +40,14 @@ export default function Chat() {
     if (!msg || loading) return
 
     setInput("")
-    setMessages(prev => [...prev, { role: "user", text: msg }])
+    const nextMessages = [...messages, { role: "user", text: msg }]
+    setMessages(nextMessages)
     setLoading(true)
 
     try {
       const res = await axios.post("https://nisum04-nepbpe-api.hf.space/chat", {
         message: msg,
+        history: buildHistory(nextMessages),
         temperature: 0.8,
         max_tokens: 100,
       })

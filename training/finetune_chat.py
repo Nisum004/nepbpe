@@ -109,8 +109,8 @@ def chat_generate(prompt, max_tokens=80, temperature=0.7, top_k=30, rep_penalty=
 
     full_text = sp.decode(generated)
     # Extract just the answer part
-    if "उत्तर:" in full_text:
-        answer = full_text.split("उत्तर:")[-1].strip()
+    if "उत्तर ।" in full_text:
+        answer = full_text.split("उत्तर ।")[-1].strip()
         return answer
     return full_text
 

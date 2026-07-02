@@ -1,8 +1,8 @@
 import json
 import os
 
-# Simple Nepali Q&A pairs — mix of templates + real questions
-# Enough to teach the model conversation format
+# Simple Nepali conversational pairs.
+# This format is meant to teach turn structure, not just isolated answers.
 
 qa_pairs = [
     # Greetings

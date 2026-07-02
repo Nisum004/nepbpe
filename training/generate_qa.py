@@ -87,7 +87,7 @@ with open("data/chat_data.txt", "a", encoding="utf-8") as f:
         q = pair.get("q", "").strip()
         a = pair.get("a", "").strip()
         if q and a:
-            f.write(f"प्रश्न: {q}\nउत्तर: {a}\n\n")
+            f.write(f"प्रश्न । {q}\nउत्तर । {a}\nअन्त्य ।\n\n")
 
 # Save raw JSON for reference
 with open("data/qa_pairs.json", "w", encoding="utf-8") as f:
@@ -99,4 +99,4 @@ with open("data/chat_data.txt", "r", encoding="utf-8") as f:
 
 print(f"💾 Training file: data/chat_data.txt")
 print(f"💾 Raw JSON:      data/qa_pairs.json")
-print(f"📊 Total Q&A pairs in training file: {len([l for l in lines if l.startswith('प्रश्न:')])}")
+print(f"📊 Total Q&A pairs in training file: {len([l for l in lines if l.startswith('प्रश्न ।')])}")

@@ -9,6 +9,7 @@ from transformers import AutoTokenizer
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from pydantic import Field
 from model_torch import NepBPETorch, CONFIG
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -86,8 +87,34 @@ class GenerateRequest(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str
+    history: list[dict[str, str]] = Field(default_factory=list)
     temperature: float = 0.8
     max_tokens: int = 100
+
+
+CHAT_SYSTEM_PROMPT = (
+    "तपाईं एक उपयोगी, विनम्र नेपाली सहायक हुनुहुन्छ। "
+    "छोटो र स्पष्ट उत्तर दिनुहोस्। "
+    "यदि प्रश्न अस्पष्ट छ भने एउटा छोटो clarifying प्रश्न सोध्नुहोस्। "
+    "यदि जानकारी थाहा छैन भने त्यो स्पष्ट रूपमा भन्नुहोस्।"
+)
+
+
+def build_chat_prompt(message: str, history: list[dict[str, str]]):
+    parts = [f"निर्देशन । {CHAT_SYSTEM_PROMPT}"]
+
+    for turn in history[-8:]:
+        role = turn.get("role", "").strip().lower()
+        content = turn.get("content", "").strip()
+        if not content:
+            continue
+        if role == "user":
+            parts.append(f"प्रश्न । {content}")
+        elif role == "assistant":
+            parts.append(f"उत्तर । {content}")
+
+    parts.append(f"प्रश्न । {message}\nउत्तर ।")
+    return "\n".join(parts)
 
 # ── Generation helper ─────────────────────────────────────
 def generate_tokens(mdl, input_ids, max_tokens, temperature, top_k, rep_penalty):
@@ -169,7 +196,7 @@ def generate(req: GenerateRequest):
 
 @app.post("/chat")
 def chat(req: ChatRequest):
-    full_prompt = f"प्रश्न । {req.message}\nउत्तर ।"
+    full_prompt = build_chat_prompt(req.message, req.history or [])
     ids         = sp.encode(full_prompt, out_type=int)
     stop_ids    = sp.encode("अन्त्य ।", out_type=int)
     new_q_ids   = sp.encode("प्रश्न ।", out_type=int)
