@@ -126,10 +126,10 @@ export default function Tokenizer() {
     if (!text.trim()) return
     setLoading(true)
     try {
-      const res = await axios.post("http://localhost:8000/tokenize", { text })
+      const res = await axios.post("https://nisum04-nepbpe-api.hf.space/tokenize", { text })
       setResult(res.data)
     } catch {
-      alert("Could not reach backend at localhost:8000")
+      alert("Could not reach backend at https://nisum04-nepbpe-api.hf.space")
     }
     setLoading(false)
   }, [text])

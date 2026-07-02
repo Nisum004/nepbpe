@@ -5,7 +5,7 @@ export default function Stats() {
   const [stats, setStats] = useState(null)
 
   useEffect(() => {
-    axios.get("http://localhost:8000/stats").then(r => setStats(r.data))
+    axios.get("https://nisum04-nepbpe-api.hf.space/stats").then(r => setStats(r.data))
   }, [])
 
   if (!stats) return <p style={{ color: "#888" }}>Loading...</p>

@@ -15,7 +15,7 @@ export default function Generate() {
     setLoading(true)
     setResult(null)
     try {
-      const res = await axios.post("http://localhost:8000/generate", {
+      const res = await axios.post("https://nisum04-nepbpe-api.hf.space/generate", {
         prompt,
         temperature: temp,
         top_k: topK,

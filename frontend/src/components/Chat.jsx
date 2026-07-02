@@ -33,7 +33,7 @@ export default function Chat() {
     setLoading(true)
 
     try {
-      const res = await axios.post("http://localhost:8000/chat", {
+      const res = await axios.post("https://nisum04-nepbpe-api.hf.space/chat", {
         message: msg,
         temperature: 0.8,
         max_tokens: 100,

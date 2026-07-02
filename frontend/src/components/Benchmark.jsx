@@ -10,7 +10,7 @@ export default function Benchmark() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    axios.get("http://localhost:8000/benchmark")
+    axios.get("https://nisum04-nepbpe-api.hf.space/benchmark")
       .then(r => setData(r.data))
       .catch(e => setError(e.message))
   }, [])

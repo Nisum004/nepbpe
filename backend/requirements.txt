@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sentencepiece
+tiktoken
+transformers
+torch
+numpy
+huggingface_hub
+pydantic
