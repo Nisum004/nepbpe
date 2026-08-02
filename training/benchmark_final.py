@@ -10,8 +10,8 @@ os.makedirs("benchmark", exist_ok=True)
 sp = spm.SentencePieceProcessor()
 sp.load("tokenizer/nepbpe_spm/nepbpe.model")
 
-# GPT-4o
-gpt4 = tiktoken.get_encoding("cl100k_base")
+# GPT-4o (o200k_base — cl100k_base is GPT-4/3.5-turbo's older encoding, not GPT-4o's)
+gpt4 = tiktoken.get_encoding("o200k_base")
 
 # Llama3
 print("Loading Llama3 tokenizer...")

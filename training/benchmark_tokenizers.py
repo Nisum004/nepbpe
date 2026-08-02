@@ -10,7 +10,7 @@ our_tokenizer = ByteLevelBPETokenizer(
 )
 
 # Load GPT-4o tokenizer
-gpt4_tokenizer = tiktoken.get_encoding("cl100k_base")
+gpt4_tokenizer = tiktoken.get_encoding("o200k_base")
 
 # Load Llama3 tokenizer
 print("Loading Llama3 tokenizer...")

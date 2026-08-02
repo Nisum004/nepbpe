@@ -100,8 +100,8 @@ class NepBPE(nn.Module):
         return total
 
 
-# 117M config — full send
-CONFIG_117M = {
+# 184M config — full send
+CONFIG_184M = {
     "vocab_size":   64000,
     "context_len":  1024,
     "d_model":      768,
@@ -113,8 +113,8 @@ CONFIG_117M = {
 if __name__ == "__main__":
     from mlx.utils import tree_flatten
 
-    print("🏗️  Building NepBPE-117M...")
-    model = NepBPE(CONFIG_117M)
+    print("🏗️  Building NepBPE-184M...")
+    model = NepBPE(CONFIG_184M)
 
     # Count parameters
     total = sum(
@@ -130,4 +130,4 @@ if __name__ == "__main__":
     print(f"✅ Model built successfully")
     print(f"📐 Output shape: {out.shape}")
     print(f"🔢 Parameters: {total:,} ({total/1e6:.1f}M)")
-    print(f"📋 Config: {CONFIG_117M}")
+    print(f"📋 Config: {CONFIG_184M}")

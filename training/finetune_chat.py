@@ -10,7 +10,7 @@ import math
 import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from model import NepBPE, CONFIG_117M
+from model import NepBPE, CONFIG_184M
 
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -67,7 +67,7 @@ def loss_fn(model, x, y):
 
 # Load pretrained model
 print("🏗️  Loading pretrained model...")
-model = NepBPE(CONFIG_117M)
+model = NepBPE(CONFIG_184M)
 model.load_weights(FINETUNE_CONFIG["base_model"])
 mx.eval(model.parameters())
 print("✅ Pretrained weights loaded")

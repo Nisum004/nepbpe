@@ -1,14 +1,14 @@
 import mlx.core as mx
 import mlx.nn as nn
 import sentencepiece as spm
-from model import NepBPE, CONFIG_117M
+from model import NepBPE, CONFIG_184M
 
 # Load tokenizer
 sp = spm.SentencePieceProcessor()
 sp.load("tokenizer/nepbpe_spm/nepbpe.model")
 
 # Load best model
-model = NepBPE(CONFIG_117M)
+model = NepBPE(CONFIG_184M)
 model.load_weights("checkpoints/best_model.npz")
 mx.eval(model.parameters())
 print("✅ Model loaded\n")

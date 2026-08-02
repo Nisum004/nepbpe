@@ -29,7 +29,7 @@ sp.load("tokenizer/nepbpe_spm/nepbpe.model")
 print(f"✅ NepBPE tokenizer loaded — vocab: {sp.vocab_size()}")
 
 # ── Load GPT-4o tokenizer ─────────────────────────────────
-gpt4_tok = tiktoken.get_encoding("cl100k_base")
+gpt4_tok = tiktoken.get_encoding("o200k_base")
 print("✅ GPT-4o tokenizer loaded")
 
 # ── Load Llama3 tokenizer ─────────────────────────────────
@@ -255,7 +255,7 @@ def get_stats():
         "tokenizer":    "SentencePiece BPE",
         "corpus":       "Nepali Wikipedia (580k lines)",
         "savings": {
-            "vs_gpt4o":  "83.9%",
+            "vs_gpt4o":  "43.1%",
             "vs_llama3": "71.5%",
         },
         "huggingface": {

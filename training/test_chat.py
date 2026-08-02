@@ -6,12 +6,12 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from model import NepBPE, CONFIG_117M
+from model import NepBPE, CONFIG_184M
 
 sp = spm.SentencePieceProcessor()
 sp.load("tokenizer/nepbpe_spm/nepbpe.model")
 
-model = NepBPE(CONFIG_117M)
+model = NepBPE(CONFIG_184M)
 model.load_weights("checkpoints/chat_model.npz")
 mx.eval(model.parameters())
 print("✅ Chat model loaded\n")

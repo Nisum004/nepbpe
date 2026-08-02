@@ -9,7 +9,7 @@ import os
 import json
 import math
 
-from model import NepBPE, CONFIG_117M
+from model import NepBPE, CONFIG_184M
 
 # ─── Config ───────────────────────────────────────────────
 TRAIN_CONFIG = {
@@ -91,7 +91,7 @@ def get_lr(step):
 
 # ─── Build model ──────────────────────────────────────────
 print("\n🏗️  Building NepBPE-184M model...")
-model     = NepBPE(CONFIG_117M)
+model     = NepBPE(CONFIG_184M)
 mx.eval(model.parameters())
 
 total_params = sum(v.size for _, v in tree_flatten(model.parameters())

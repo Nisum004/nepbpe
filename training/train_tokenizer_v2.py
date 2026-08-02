@@ -39,7 +39,7 @@ sp = spm.SentencePieceProcessor()
 sp.load("tokenizer/nepbpe_spm/nepbpe.model")
 
 # Load GPT-4o tokenizer for comparison
-gpt4_tokenizer = tiktoken.get_encoding("cl100k_base")
+gpt4_tokenizer = tiktoken.get_encoding("o200k_base")
 
 test_sentences = [
     "तपाईंलाई कस्तो छ",

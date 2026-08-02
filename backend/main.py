@@ -12,7 +12,7 @@ import json
 
 # Fix paths
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from training.model import NepBPE, CONFIG_117M
+from training.model import NepBPE, CONFIG_184M
 
 app = FastAPI(title="NepBPE API")
 
@@ -32,7 +32,7 @@ sp.load("tokenizer/nepbpe_spm/nepbpe.model")
 print("✅ NepBPE tokenizer loaded")
 
 # GPT-4o
-gpt4_tok = tiktoken.get_encoding("cl100k_base")
+gpt4_tok = tiktoken.get_encoding("o200k_base")
 print("✅ GPT-4o tokenizer loaded")
 
 # Llama3
@@ -42,13 +42,13 @@ print("✅ Llama3 tokenizer loaded")
 
 # ── Load model ────────────────────────────────────────────
 print("🏗️  Loading NepBPE-184M model...")
-model = NepBPE(CONFIG_117M)
+model = NepBPE(CONFIG_184M)
 model.load_weights("checkpoints/best_model.npz")
 mx.eval(model.parameters())
 print("✅ Model loaded")
 # Add after existing model loading
 print("🤖 Loading chat model...")
-chat_model = NepBPE(CONFIG_117M)
+chat_model = NepBPE(CONFIG_184M)
 chat_model.load_weights("checkpoints/chat_model.npz")
 mx.eval(chat_model.parameters())
 print("✅ Chat model loaded")
@@ -174,7 +174,7 @@ def get_stats():
         "tokenizer":    "SentencePiece BPE",
         "corpus":       "Nepali Wikipedia (580k lines)",
         "savings": {
-            "vs_gpt4o":  "83.9%",
+            "vs_gpt4o":  "43.1%",
             "vs_llama3": "71.5%",
         },
         "huggingface": {
